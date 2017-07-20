@@ -8,15 +8,15 @@
   <sprites name="sprites">
     <sprite>sprites\s_panzer</sprite>
     <sprite>sprites\s_gun</sprite>
-    <sprite>sprites\s_turret</sprite>
+    <sprite>sprites\s_tower</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\obj_pazer</object>
-    <object>objects\obj_tower</object>
-    <object>objects\obj_gun</object>
+    <object>objects\obj_panzer</object>
     <object>objects\obj_turret</object>
+    <object>objects\obj_gun</object>
+    <object>objects\obj_tower</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
