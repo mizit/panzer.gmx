@@ -33,6 +33,10 @@ owner = noone;      //owner instance
 x_offset = 0;       //x-offset of owner x-position
 y_offset = 0;       //y-offset of owner y-position
 base_dir = 0;       //started angle
+
+scaled_by_owner = 0;
+xscaled = 0;
+yscaled = 0
 </string>
           </argument>
         </arguments>
@@ -57,8 +61,8 @@ base_dir = 0;       //started angle
             <kind>1</kind>
             <string>if (owner)
 {
-    x = owner.x + lengthdir_x(x_offset, owner.image_angle) + lengthdir_x(y_offset, owner.image_angle - 90);
-    y = owner.y + lengthdir_y(x_offset, owner.image_angle) + lengthdir_y(y_offset, owner.image_angle - 90);
+    x = owner.x + lengthdir_x(x_offset * owner.image_xscale, owner.image_angle) + lengthdir_x(y_offset * owner.image_yscale, owner.image_angle - 90);
+    y = owner.y + lengthdir_y(x_offset * owner.image_xscale, owner.image_angle) + lengthdir_y(y_offset * owner.image_yscale, owner.image_angle - 90);
 }
 </string>
           </argument>
@@ -89,6 +93,29 @@ if (owner)
     if (base_dir != tmp_dir)
     {
         image_angle += (tmp_dir - base_dir);
+    }
+    if (scaled_by_owner)
+    {
+        if (owner.image_xscale &lt; 0) &amp;&amp; (xscaled == 0)
+        {
+            xscaled = 1;
+            d_angle = 180 - d_angle;
+        }
+        if (owner.image_xscale &gt; 0) &amp;&amp; (xscaled == 1)
+        {
+            xscaled = 0;
+            d_angle = 180 - d_angle;
+        }
+        if (owner.image_yscale &lt; 0) &amp;&amp; (yscaled == 0)
+        {
+            yscaled = 1;
+            d_angle = 360 - d_angle;
+        }
+        if (owner.image_yscale &gt; 0) &amp;&amp; (yscaled == 1)
+        {
+            yscaled = 0;
+            d_angle = 360 - d_angle;
+        }
     }
 }
 base_dir = tmp_dir;

@@ -33,6 +33,7 @@ max_speed = 7;
 speed_accel = 0.5;
 friction = 0.4;
 speed_rot = 1; 
+speed_size = 0.01;
 
 //We are managing gun by d_angle. We can set it any.
 //So if we need a frame, we have to set it in owner.
@@ -49,6 +50,7 @@ tower.owner = id;
 tower.d_angle = 90;
 tower.x_offset = 52;
 tower.y_offset = -30;
+tower.scaled_by_owner = 1;
 </string>
           </argument>
         </arguments>
@@ -82,6 +84,9 @@ gun.d_angle = max(min(gun.d_angle, gun_max_angle), gun_min_angle);
 direction += speed_rot * (keyboard_check(ord("A")) - keyboard_check(ord("D")));
 speed += speed_accel * (keyboard_check(ord("W")) - keyboard_check(ord("S")));
 speed = max(min(speed, max_speed), -max_speed);
+
+image_xscale += speed_size * (keyboard_check(ord("Z")) - keyboard_check(ord("X")));
+image_yscale += speed_size * (keyboard_check(ord("C")) - keyboard_check(ord("V")));
 </string>
           </argument>
         </arguments>
